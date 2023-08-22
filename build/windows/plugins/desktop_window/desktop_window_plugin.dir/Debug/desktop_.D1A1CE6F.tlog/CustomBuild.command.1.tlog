@@ -1,0 +1,10 @@
+^E:\DEVELOP\MYLINGDONG\LINGDONG\WINDOWS\FLUTTER\EPHEMERAL\.PLUGIN_SYMLINKS\DESKTOP_WINDOW\WINDOWS\CMAKELISTS.TXT
+setlocal
+D:\soft\Vstudio\soft\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -SE:/develop/mylingdong/lingdong/windows -BE:/develop/mylingdong/lingdong/build/windows --check-stamp-file E:/develop/mylingdong/lingdong/build/windows/plugins/desktop_window/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

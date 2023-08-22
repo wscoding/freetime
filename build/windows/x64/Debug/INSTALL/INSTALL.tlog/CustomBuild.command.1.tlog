@@ -1,0 +1,10 @@
+^E:\DEVELOP\MYLINGDONG\LINGDONG\BUILD\WINDOWS\CMAKEFILES\02E8FA91BC9EF6E9810272117987D20D\INSTALL_FORCE.RULE
+setlocal
+cd .
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
