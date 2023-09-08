@@ -23,9 +23,6 @@ E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/li
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/dice_6.png
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/gu.png
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/icon-192.png
-E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/images/hb.jpg
-E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/images/zfb.jpg
-E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/images/zsm.png
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/tz.mp3
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/white.png
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/window_settings.json

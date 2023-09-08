@@ -27,19 +27,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   FlutterWindow window(project);
   Win32Window::Point origin(10, 10);
   Win32Window::Size size(1280, 720);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  if (!window.Create(L"windows", origin, size)) {
-=======
-  if (!window.Create(L"Free Time s0.11", origin, size)) {
->>>>>>> parent of 78685e1 (重写win桌面  备份)
-=======
-  if (!window.Create(L"Free Time s0.11", origin, size)) {
->>>>>>> parent of 78685e1 (重写win桌面  备份)
-=======
-  if (!window.Create(L"Free Time s0.11", origin, size)) {
->>>>>>> parent of 78685e1 (重写win桌面  备份)
+  if (!window.Create(L"lingdong", origin, size)) {
     return EXIT_FAILURE;
   }
   window.SetQuitOnClose(true);
