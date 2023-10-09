@@ -37,7 +37,7 @@ swSubPage(),
     children: [
       Icon(Icons.favorite_border),
       SizedBox(width: 5), // 添加一个5像素的空间
-      Text('FTS'),
+      Text('Line'),
     ],
   ),
                   selectedIcon: Icon(Icons.favorite),
@@ -48,7 +48,7 @@ swSubPage(),
     children: [
       Icon(Icons.bookmark_border),
       SizedBox(width: 5), // 添加一个5像素的空间
-      Text('选择'),
+      Text('Add'),
     ],
   ),
                   selectedIcon: Icon(Icons.book),
@@ -57,14 +57,15 @@ swSubPage(),
                 NavigationRailDestination(
               icon: Row(
     children: [
-      Icon(Icons.star_border),
+      Icon(Icons.person_2_outlined),
       SizedBox(width: 5), // 添加一个5像素的空间
-      Text('秒表'),
+      Text('Mine'),
       
     ],
   ),
-                  selectedIcon: Icon(Icons.star),
+                  selectedIcon: Icon(Icons.person_2),
                   label: Text('按钮3'),
+                  
                 ),
               ],
             ),
@@ -76,7 +77,7 @@ swSubPage(),
               currentIndex: _currentIndex,
               items:const [
                 BottomNavigationBarItem(icon: Icon(Icons.home), label: '灵动挂件'),
-                BottomNavigationBarItem(icon: Icon(Icons.search), label: '添加挂件'),
+                BottomNavigationBarItem(icon: Icon(Icons.add_box), label: '添加挂件'),
                 BottomNavigationBarItem(icon: Icon(Icons.person), label: '个人'),
               ],
               onTap: (index) {

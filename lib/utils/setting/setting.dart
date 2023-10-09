@@ -1,8 +1,27 @@
 import 'package:FreeTime/export.dart';
 import 'package:FreeTime/viewpage/about/amain.dart';
 import 'package:FreeTime/viewpage/about/license.dart';
+import 'package:FreeTime/list.dart';
 
-class SettingsPage extends StatelessWidget {
+
+
+
+class SettingsPage extends StatefulWidget {
+
+  @override
+  _SettingsPageState createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  int _currentTipIndex = 0;
+
+
+  void _changeTip() {
+    setState(() {
+      _currentTipIndex = (_currentTipIndex + 1) % tips.length;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,6 +30,22 @@ class SettingsPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          SizedBox(height: 10,),
+ ElevatedButton(
+  style: ElevatedButton.styleFrom(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20), // 设置按钮的圆角半径
+    ),
+    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30), // 设置按钮的内边距
+    textStyle: TextStyle(fontSize: 16), // 设置按钮文本的样式
+    primary: Colors.lightBlue, // 设置按钮的背景颜色为浅蓝色
+    minimumSize: Size(MediaQuery.of(context).size.width / 2, 0), // 设置按钮宽度为父容器宽度的一半
+  ),
+  child: Text(tips[_currentTipIndex]),
+  onPressed: _changeTip,
+),
+
+
           ListTile(
             leading: Icon(Icons.person),
             title: Text('调试信息'),
@@ -27,7 +62,7 @@ class SettingsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => aboutPage()),
+                MaterialPageRoute(builder: (context) => oldtestSubPageon()),
               );
             },
           ),
@@ -41,6 +76,9 @@ class SettingsPage extends StatelessWidget {
               );
             },
           ),
+
+
+
           ListTile(
             leading: Icon(Icons.palette),
             title: Text('外观设置'),
@@ -50,7 +88,11 @@ class SettingsPage extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => AppearancePage()),
               );
             },
+
+     
+
           ),
+
           ListTile(
             leading: Icon(Icons.language),
             title: Text('语言设置'),
@@ -72,6 +114,8 @@ class SettingsPage extends StatelessWidget {
       ),
     );
   }
+  
+
 }
 
 // 以下是每个选项对应的新页面的示例，您可以根据需要自定义每个页面的内容和布局
@@ -93,6 +137,10 @@ class AppearancePage extends StatelessWidget {
     );
   }
 }
+
+
+
+
 
 class LanguagePage extends StatelessWidget {
   @override

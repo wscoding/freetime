@@ -37,7 +37,7 @@ class _PasswordPageState extends State<PasswordPage> {
       ),
       body: Padding(
         padding: EdgeInsets.all(16),
-        child: Column(
+        child:SingleChildScrollView(child:        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
        const     Text(
@@ -58,7 +58,8 @@ class _PasswordPageState extends State<PasswordPage> {
               style: TextStyle(fontSize: 12, color: Colors.grey),
             ),
            const SizedBox(height: 8),
-Row(
+
+       Row(
   children: [
 
 
@@ -116,6 +117,7 @@ const   Text(
        ),
   ],
 ),
+
 
 
   
@@ -196,7 +198,9 @@ const   Text(
 
 
           ],
-        ),
+        ),),
+        
+  
       ),
     );
   }

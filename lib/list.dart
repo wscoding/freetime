@@ -456,6 +456,15 @@ Map<String, dynamic> getLunarCalendarInfo() {
   };
 }
 
+  List<String> tips = [
+    'Tip 1: 🎊  🐰年大🍊!',
+    'Tip 2: 这是第二个提示。',
+    'Tip 3: 这是第三个提示。',
+    'Tip 4: 这是第四个提示。',
+  ];
+
+
+
 Map<String, String> zhtai = {
   'aa': '完整支持',
   'be': '支持',

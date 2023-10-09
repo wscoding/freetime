@@ -77,8 +77,8 @@ void applyWindowSettings(String path) async {
   void _updateTimeLeft() {
     final Duration duration = date.difference(DateTime.now());
     _timeLeft = duration.isNegative
-        ? _formatDuration(duration.abs(), '距离纪念日已过去\n')
-        : _formatDuration(duration, '距离现在还有\n');
+        ? _formatDuration(duration.abs(), '距今已过去\n')
+        : _formatDuration(duration, '距今还有\n');
   }
 
   @override

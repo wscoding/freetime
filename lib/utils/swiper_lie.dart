@@ -4,6 +4,7 @@ import 'package:FreeTime/utils/zanshang/zsmain.dart';
 import 'package:FreeTime/viewpage/widgets/heart/love.dart';
 
 import '../export.dart';
+import '../viewpage/about/amain.dart';
 import '../viewpage/widgets/demo/t1.dart';
 import '../viewpage/widgets/notes/note.dart';
 
@@ -105,7 +106,8 @@ class MyListViews extends StatelessWidget {
                    trailing: Icon(Icons.font_download),
              contentPadding: EdgeInsets.symmetric(horizontal: 70.0),
             onTap: () {
-       Navigator.push(context, MaterialPageRoute(builder: (context) => MySubPageon()));
+       Navigator.push(context, 
+       MaterialPageRoute(builder: (context) => aboutPage()));
 
       //   ScaffoldMessenger.of(context).showSnackBar(
       // const  SnackBar(
@@ -149,9 +151,46 @@ class MyListViews extends StatelessWidget {
           );
         }
          else {
-          return Text("  test123"
-       
-          );
+          return Container(
+            width: 60,
+  decoration: BoxDecoration(
+    border: Border.all(
+      color: Colors.grey, // 设置线条的颜色
+      width: 1, // 设置线条的宽度
+    ),
+    borderRadius: BorderRadius.circular(10), // 设置卡片的圆角半径
+  ),
+  child: Card(
+   elevation: 0, // 设置卡片的阴影
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10), // 设置卡片的圆角半径
+    ),
+    child: Container(
+  //  width: 10,
+   
+      width: MediaQuery.of(context).size.width / 2, // 设置卡片宽度为父组件宽度的一半
+      padding: EdgeInsets.all(10), // 设置卡片内部的边距
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center, // 将文本和图片水平居中对齐
+        children: [
+          Image.asset(
+            'lib/assets/888.png', // 替换为您的图片路径
+            width: 24, // 设置图片的宽度
+            height: 24, // 设置图片的高度
+          ),
+          SizedBox(width: 8), // 添加一个间距
+          Text(
+            "更多功能开发中...",
+            style: TextStyle(fontSize: 16), // 设置文本的样式
+          ),
+        ],
+      ),
+    ),
+  ),
+);
+
+    
+
         }
       },
 
