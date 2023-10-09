@@ -1,6 +1,5 @@
 import '../export.dart';
 
-
 String? globalTitle;
 String? globalContents;
 

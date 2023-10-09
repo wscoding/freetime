@@ -13,23 +13,24 @@ class zsmPage extends StatelessWidget {
         children: [
           Expanded(
             child: MyImageButton(
-              image: 'lib/assets/images/zsm.png',
-              title: 'ws',
-              description: '这是第一张图片的描述',
+              image: "lib/assets/zsm.png",
+              // "lib/assets/clock_background.png",
+              title: '微信支付',
+              description: '支付前请备注姓名,用于在后续赞助名单展示',
             ),
           ),
           Expanded(
             child: MyImageButton(
-              image: 'lib/assets/images/hb.jpg',
-              title: '22',
-              description: '这是第二张图片的描述',
+              image: "lib/assets/hb.jpg",
+              title: '支付宝红包',
+              description: '你的备注对我很重要',
             ),
           ),
           Expanded(
             child: MyImageButton(
-              image: 'lib/assets/images/zfb.jpg',
-              title: '图片3',
-              description: '这是第三张图片的描述',
+              image: "lib/assets/zfb.jpg",
+              title: '支付宝',
+              description: '支付前请备注姓名,用于在后续赞助名单暂时',
             ),
           ),
           Container(

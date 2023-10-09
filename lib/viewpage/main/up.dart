@@ -21,7 +21,7 @@ class _MyPageState extends State<ExampleMainWindow> {
 
   Future<void> fetchData() async {
     try {
-final response = await http.get(Uri.parse('http://zt.3g.gs/app/free/code.json'),
+final response = await http.get(Uri.parse('http://zt.999087.com/app/free/code.json'),
  headers: {
     'Accept': 'application/json',
     'Accept-Charset': 'utf-8',

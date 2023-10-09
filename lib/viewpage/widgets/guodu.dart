@@ -12,7 +12,7 @@ import 'electron/electron-soft.dart';
 import 'jishuqi/jishuqi.dart';
   class MySubPage extends StatelessWidget {
     final Item item;
-  const MySubPage({Key? key, required this.item}) : super(key: key);
+   MySubPage({Key? key, required this.item}) : super(key: key);
 void navigateToPage(BuildContext context, Widget page, Item item) {
   navigateAndZoom(
     context,

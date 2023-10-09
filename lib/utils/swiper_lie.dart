@@ -1,7 +1,6 @@
 
-
-
-
+import 'package:FreeTime/utils/setting/setting.dart';
+import 'package:FreeTime/utils/zanshang/zsmain.dart';
 import 'package:FreeTime/viewpage/widgets/heart/love.dart';
 
 import '../export.dart';
@@ -22,7 +21,7 @@ class MyListViews extends StatelessWidget {
       itemBuilder: (context, index) {
         if (index == 0) {
           return   ListTile(              
-            title: Text('搜索 ${index + 1}'),
+            title: Text('   搜索'),
             trailing:  Icon(Icons.search),
              contentPadding: EdgeInsets.symmetric(horizontal: 70.0),
             onTap: () {
@@ -31,7 +30,7 @@ class MyListViews extends StatelessWidget {
               // windowManager.startDragging();
               // Navigate to ViewPager1 page
 // Navigator.push(context, MaterialPageRoute(builder:
-//  (context) => AltAKeyListener()));
+//  (context) => SettingsPage()));
             },
 
           );
@@ -39,29 +38,29 @@ class MyListViews extends StatelessWidget {
        
         } else if (index == 1) {
           return ListTile(
-            title: Text('设置 ${index + 1}'),
+            title: Text('   设置'),
                    trailing: Icon(Icons.favorite),
              contentPadding: EdgeInsets.symmetric(horizontal: 70.0),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) => const OtherPage()));
+    Navigator.push(context, MaterialPageRoute(builder:
+ (context) => SettingsPage()));
               // Navigator.push(context, MaterialPageRoute(builder: (context) => ViewPager2()));
             },
           );
         } else if (index == 2) {
           return ListTile(
-            title: Text('调试 ${index + 1}'),
+            title: Text('   调试'),
                    trailing: Icon(Icons.font_download),
              contentPadding: EdgeInsets.symmetric(horizontal: 70.0),
             onTap: () {
               // Navigate to ViewPager3 page
-//  Navigator.push(context, MaterialPageRoute(builder: (context) =>
-//   Paper()));
+ Navigator.push(context, MaterialPageRoute(builder: (context) =>
+  zsmPage()));
             },
           );
         } else if (index == 3) {
           return ListTile(
-            title: Text('赞助 ${index + 1}'),
+            title: Text('   赞助'),
                    trailing: Icon(Icons.font_download),
              contentPadding: EdgeInsets.symmetric(horizontal: 70.0),
             onTap: () {
@@ -76,7 +75,7 @@ class MyListViews extends StatelessWidget {
           );
         } else if (index == 4) {
           return ListTile(
-            title: Text('图片 ${index + 1}'),
+            title: Text('   图片'),
                    trailing: Icon(Icons.font_download),
              contentPadding: EdgeInsets.symmetric(horizontal: 70.0),
             onTap: () {
@@ -86,7 +85,7 @@ class MyListViews extends StatelessWidget {
           );
         }else if (index == 5) {
           return ListTile(
-            title: Text('退出 ${index + 1}'),
+            title: Text('   退出'),
                    trailing: Icon(Icons.font_download),
              contentPadding: EdgeInsets.symmetric(horizontal: 70.0),
             onTap: () {
@@ -102,11 +101,11 @@ class MyListViews extends StatelessWidget {
         
         else if (index == 6) {
           return ListTile(
-            title: Text('关于 ${index + 1}'),
+            title: Text('   关于'),
                    trailing: Icon(Icons.font_download),
              contentPadding: EdgeInsets.symmetric(horizontal: 70.0),
             onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => MySubPageon()));
+       Navigator.push(context, MaterialPageRoute(builder: (context) => MySubPageon()));
 
       //   ScaffoldMessenger.of(context).showSnackBar(
       // const  SnackBar(
@@ -125,7 +124,7 @@ class MyListViews extends StatelessWidget {
         }
         else if (index == 7) {
           return ListTile(
-            title: Text('Language ${index + 1}'),
+            title: Text('Language '),
                    trailing: Icon(Icons.font_download),
              contentPadding: EdgeInsets.symmetric(horizontal: 70.0),
             onTap: () {
@@ -137,7 +136,7 @@ class MyListViews extends StatelessWidget {
         }
           else if (index == 8) {
           return ListTile(
-            title: Text('Freetime  ${index + 1}'),
+            title: Text('Freetime  '),
                    trailing: Icon(Icons.font_download),
              contentPadding: EdgeInsets.symmetric(horizontal: 70.0),
             onTap: () {
@@ -150,7 +149,7 @@ class MyListViews extends StatelessWidget {
           );
         }
          else {
-          return Text("123"
+          return Text("  test123"
        
           );
         }

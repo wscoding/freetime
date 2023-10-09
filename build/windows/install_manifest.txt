@@ -22,10 +22,13 @@ E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/li
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/dice_5.png
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/dice_6.png
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/gu.png
+E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/hb.jpg
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/icon-192.png
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/tz.mp3
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/white.png
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/window_settings.json
+E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/zfb.jpg
+E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/lib/assets/zsm.png
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/NOTICES.Z
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
 E:/develop/mylingdong/lingdong/build/windows/runner/Debug/data/flutter_assets/packages/window_manager/images/ic_chrome_close.png

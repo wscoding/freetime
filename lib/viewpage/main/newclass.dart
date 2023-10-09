@@ -158,33 +158,6 @@ Future<void> _editItem(Item item) async {
   
   }
 
-// void navigateAndZoom(BuildContext context,
-//  Future<dynamic> Function() navigateFunction) {
-
-
-//   navigateFunction().then((result) async {
-//     if (result == true) {
-//       if (Platform.isWindows || Platform.isMacOS) {
-//         WidgetsFlutterBinding.ensureInitialized();
-//         await windowManager.ensureInitialized();
-
-//         WindowOptions windowOptions =  WindowOptions(
-//           size: Size(600, 650),
-//        minimumSize: Size(item.width, item.height),
-//       maximumSize: Size(800, 800),
-//           center: true,
-//           backgroundColor: Colors.transparent,
-//           skipTaskbar: false,
-//           titleBarStyle: TitleBarStyle.normal,
-//         );
-//         windowManager.waitUntilReadyToShow(windowOptions, () async {
-//           await windowManager.show();
-//           await windowManager.focus();
-//         });
-//       }
-//     }
-//   });
-// }
 void navigateAndZoom(BuildContext context,
   Future<dynamic> Function() navigateFunction, {required Item item}) {
   navigateFunction().then((result) async {
@@ -267,15 +240,18 @@ void navigateAndZoom(BuildContext context,
     children: [
       IconButton(
         icon: Icon(Icons.edit),
+  tooltip: '编辑',
         onPressed: () => _editItem(item),
       ),
       IconButton(
         icon: Icon(Icons.delete),
+         tooltip: '删除',
         onPressed: () => _confirmDelete(item),
       ),
       
       IconButton(
         icon: Icon(Icons.info),
+        tooltip: '预览',
         onPressed: () {
           Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => ItemDisplayPage(item: item)),
@@ -292,6 +268,7 @@ void navigateAndZoom(BuildContext context,
 
       IconButton(
         icon: Icon(Icons.textsms),
+         tooltip: '展示',
         onPressed: () {
 navigateAndZoom(context, () => Navigator.push(context, 
 MaterialPageRoute(builder: (context) => MySubPage(item: item))), item: item);  
@@ -301,6 +278,8 @@ MaterialPageRoute(builder: (context) => MySubPage(item: item))), item: item);
 
 
         IconButton(
+                   tooltip: 'widgets',
+
         icon: Icon(Icons.apps),
    onPressed: () async {
 
@@ -316,6 +295,8 @@ MaterialPageRoute(builder: (context) => MySubPage(item: item))), item: item);
       ),
 
 IconButton(
+           tooltip: 'Windows',
+
   icon: Icon(Icons.window),
   onPressed: () async {
   // 在返回到 _HomePageState 页面时，根据 result 的值更新页面缩放
@@ -336,10 +317,6 @@ if (item.type == 'a') {
   MaterialPageRoute(builder: (context) =>
    EditItemPage(item: item)));
 }
-
- // runApp( MyApp());
-
-
   },
 ),
 

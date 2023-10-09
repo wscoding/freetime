@@ -15,7 +15,7 @@ class _MySubPageState extends State<MySubPageon> {
   }
 
   Future<void> _fetchData() async {
- final response = await http.get(Uri.parse('http://zt.3g.gs/app/free/online.json'));
+ final response = await http.get(Uri.parse('http://zt.999087.com/app/free/online.json'));
 
 if (response.statusCode == 200) {
   final contentType = response.headers['content-type'];

@@ -1,4 +1,4 @@
-
+import 'package:FreeTime/viewpage/widgets/guodu.dart';
 
 import '../export.dart';
 import 'package:http/http.dart' as http;
@@ -14,32 +14,32 @@ class _MySubPageState extends State<MySubPageons> {
   List<dynamic> _data = [];
   bool _loading = true;
 
+  Future<void> _importDataFromClipboard() async {
+    final clipboardData = await Clipboard.getData(Clipboard.kTextPlain);
+    if (clipboardData == null || clipboardData.text == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Failed to import data from clipboard.'),
+        ),
+      );
+      return;
+    }
+    try {
+      final data = jsonDecode(clipboardData.text!);
+      setState(() {
+        _data = data;
+      });
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('data', clipboardData.text!);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Failed to decode JSON data from clipboard.'),
+        ),
+      );
+    }
+  }
 
-Future<void> _importDataFromClipboard() async {
-  final clipboardData = await Clipboard.getData(Clipboard.kTextPlain);
-  if (clipboardData == null || clipboardData.text == null) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Failed to import data from clipboard.'),
-      ),
-    );
-    return;
-  }
-  try {
-    final data = jsonDecode(clipboardData.text!);
-    setState(() {
-      _data = data;
-    });
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('data', clipboardData.text!);
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Failed to decode JSON data from clipboard.'),
-      ),
-    );
-  }
-}
   Future<void> _deleteItem(int index) async {
     setState(() {
       _data.removeAt(index);
@@ -61,10 +61,10 @@ Future<void> _importDataFromClipboard() async {
     final item = _data[index];
     // final clipboardData =
     //     'ID: ${item['id']}\nTitle: ${item['title']}\nContent: ${item['content']}';
-    final clipboardData ='[' + jsonEncode(item) + ']';
-await Clipboard.setData(ClipboardData(
-  text: clipboardData,
-));
+    final clipboardData = '[' + jsonEncode(item) + ']';
+    await Clipboard.setData(ClipboardData(
+      text: clipboardData,
+    ));
     await Clipboard.setData(ClipboardData(text: clipboardData));
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -96,78 +96,116 @@ await Clipboard.setData(ClipboardData(
     setState(() {
       _loading = true;
     });
-final dio = Dio(BaseOptions(
-  responseType: ResponseType.bytes,
-  headers: {'Accept-Encoding': 'gzip, deflate'},
-  contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-  validateStatus: (status) {
-    return status! < 500;
-  },
-));
+    final dio = Dio(BaseOptions(
+      responseType: ResponseType.bytes,
+      headers: {'Accept-Encoding': 'gzip, deflate'},
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      validateStatus: (status) {
+        return status! < 500;
+      },
+    ));
 
-try {
-  final response = await dio.get('http://zt.3g.gs/app/free/online.json');
-  if (response.statusCode == 200) {
-    final jsonString = utf8.decode(response.data);
-    final data = jsonDecode(jsonString);
-    setState(() {
-      _data = data;
-    });
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('data', jsonString);
-  } else {
-    final prefs = await SharedPreferences.getInstance();
-    final savedData = prefs.getString('data');
-    if (savedData != null) {
-      setState(() {
-        _data = jsonDecode(savedData);
-      });
-    }
-  }
-} catch (e) {
-  final prefs = await SharedPreferences.getInstance();
-  final savedData = prefs.getString('data');
-  if (savedData != null) {
-      _data = jsonDecode(savedData);
-    // setState(() {
-    
-    // });
-  }
-}
-    // setState(() {
-    
-    // });
-      _loading = false;
-print('End loading data at ${DateTime.now()} with status ${_loading ? "loading" : "not loading"}');
-  }
-
-
-
-Future<void> loaditemData(int index) async {
-  setState(() {
-    _loading = true;
-  });
-  try {
-    final response = await http.get(Uri.parse('http://zt.3g.gs/app/free/online.json'));
-    if (response.statusCode == 200) {
-            final bytes = response.bodyBytes;
-      final jsonString = utf8.decode(bytes);
-
-
-      final data = jsonDecode(jsonString);
-      setState(() {
-        _data = data;
-      });
+    try {
+      final response =
+          await dio.get('http://zt.999087.com/app/free/online.json');
+      if (response.statusCode == 200) {
+        final jsonString = utf8.decode(response.data);
+        final data = jsonDecode(jsonString);
+        setState(() {
+          _data = data;
+        });
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('data', jsonString);
+      } else {
+        final prefs = await SharedPreferences.getInstance();
+        final savedData = prefs.getString('data');
+        if (savedData != null) {
+          setState(() {
+            _data = jsonDecode(savedData);
+          });
+        }
+      }
+    } catch (e) {
       final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('data', response.body);
-      final item = Item.fromJson(data[index]);
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => EditItemPage(item: item),
-        ),
-      );
-    } else {
+      final savedData = prefs.getString('data');
+      if (savedData != null) {
+        _data = jsonDecode(savedData);
+        // setState(() {
+
+        // });
+      }
+    }
+    // setState(() {
+
+    // });
+    _loading = false;
+    print(
+        'End loading data at ${DateTime.now()} with status ${_loading ? "loading" : "not loading"}');
+  }
+
+  void navigateAndZoom(
+      BuildContext context, Future<dynamic> Function() navigateFunction,
+      {required Item item}) {
+    navigateFunction().then((result) async {
+      if (result == true) {
+        if (Platform.isWindows || Platform.isMacOS) {
+          WidgetsFlutterBinding.ensureInitialized();
+          await windowManager.ensureInitialized();
+          WindowOptions windowOptions = WindowOptions(
+            size: Size(600, 650), //宽高
+            minimumSize:
+                Size(item.width.toDouble() * 2, item.height.toDouble() * 2),
+            maximumSize: Size(800, 800),
+            center: true,
+            backgroundColor: Colors.transparent,
+            skipTaskbar: false,
+            titleBarStyle: TitleBarStyle.normal,
+          );
+          windowManager.waitUntilReadyToShow(windowOptions, () async {
+            await windowManager.show();
+            await windowManager.focus();
+            print(item.width.toDouble() * 2);
+            print(item.height.toDouble() * 2);
+          });
+        }
+      }
+    });
+  }
+
+  Future<void> loaditemData(int index) async {
+    setState(() {
+      _loading = true;
+    });
+    try {
+      final response = await http
+          .get(Uri.parse('http://zt.999087.com/app/free/online.json'));
+      if (response.statusCode == 200) {
+        final bytes = response.bodyBytes;
+        final jsonString = utf8.decode(bytes);
+
+        final data = jsonDecode(jsonString);
+        setState(() {
+          _data = data;
+        });
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('data', response.body);
+        final item = Item.fromJson(data[index]);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => EditItemPage(item: item),
+          ),
+        );
+      } else {
+        final prefs = await SharedPreferences.getInstance();
+        final savedData = prefs.getString('data');
+        if (savedData != null) {
+          setState(() {
+            _data = jsonDecode(savedData);
+          });
+        }
+      }
+    } catch (e) {
       final prefs = await SharedPreferences.getInstance();
       final savedData = prefs.getString('data');
       if (savedData != null) {
@@ -176,20 +214,12 @@ Future<void> loaditemData(int index) async {
         });
       }
     }
-  } catch (e) {
-    final prefs = await SharedPreferences.getInstance();
-    final savedData = prefs.getString('data');
-    if (savedData != null) {
-      setState(() {
-        _data = jsonDecode(savedData);
-      });
-    }
+    setState(() {
+      _loading = false;
+    });
+    print(
+        'loaditemData  End loading data at ${DateTime.now()} with status ${_loading ? "loading" : "not loading"}');
   }
-  setState(() {
-    _loading = false;
-  });
-    print('loaditemData  End loading data at ${DateTime.now()} with status ${_loading ? "loading" : "not loading"}');
-}
 
   Future<void> _editItem(int index) async {
     final item = _data[index];
@@ -227,21 +257,21 @@ Future<void> loaditemData(int index) async {
           label: 'Import',
         ),
       ],
-    onTap: _handleBottomNavTap,
+      onTap: _handleBottomNavTap,
     );
   }
+
   void _handleBottomNavTap(int index) {
     switch (index) {
       case 0:
-       _loadData();
-          
+        _loadData();
+
         break;
       case 1:
-          _importDataFromClipboard();
+        _importDataFromClipboard();
         break;
     }
   }
-
 
   @override
   void initState() {
@@ -253,12 +283,12 @@ Future<void> loaditemData(int index) async {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-  backgroundColor: Colors.white, // 设置背景颜色为白色
-  title: Text(
-    '推荐小部件(联网)',
-    style: TextStyle(color: Colors.black), // 设置标题颜色为黑色
-  ),
-),
+        backgroundColor: Colors.white, // 设置背景颜色为白色
+        title: Text(
+          '推荐小部件(联网)',
+          style: TextStyle(color: Colors.black), // 设置标题颜色为黑色
+        ),
+      ),
       body: _loading
           ? Center(
               child: CircularProgressIndicator(),
@@ -271,94 +301,145 @@ Future<void> loaditemData(int index) async {
                 final subtitle = item['randomString'];
                 final type = item['type'];
                 final color = Color(item['color']);
-                final edited = item['edited']?? false;
+                final edited = item['edited'] ?? false;
                 return _data.isEmpty
-          ? Center(
-              child: Text('列表为空'),
-            )
-          :
-                 ListTile(
-                  leading: CircleAvatar(
-                    backgroundColor: color,
-                    child: Text(
-                      type,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  title: Text(title),
-                  subtitle: Text(subtitle),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.delete),
-                        onPressed: () => _deleteItem(index),
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.copy),
-                        onPressed: () => _copyItem(index),
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.details),
-                        onPressed: () => _showItemDetails(index),
-                      ),
-                  IconButton(
-  icon: Icon(Icons.add),
-   onPressed: () {
+                    ? Center(
+                        child: Text('列表为空'),
+                      )
+                    : ListTile(
+                        leading: CircleAvatar(
+                          backgroundColor: color,
+                          child: Text(
+                            type,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        title: Text(title),
+                        subtitle: Text(subtitle),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.textsms),
+                              tooltip: '展示',
+                              onPressed: () {
+                                navigateAndZoom(
+                                    context,
+                                    () => Navigator.push(
+                                        context,
+                                        
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                            MySubPage(item: Item(id: item['id'] , 
+title: item['title'] , 
+ content: item['content'] , 
+ type: item['type'] , 
+ date: DateTime.parse(item['date']),
+ color: Color(item['color']), 
+ value: item['value'] , 
+ width: item['width'] , 
+  height: item['height'] , 
+  randomString: item['randomString'] , 
+  textsize:item['textsize'] , 
+  textheme: item['textheme'] , 
+  values:item['values'] , 
+  isapp:item['isapp'] , 
+  selectedValuezv:item['selectedValuezv'] , ) ))),
+                                    item: 
+Item(id: item['id'] , 
+title: item['title'] , 
+ content: item['content'] , 
+ type: item['type'] , 
+ date: DateTime.parse(item['date']),
+ color: Color(item['color']), 
+ value: item['value'] , 
+ width: item['width'] , 
+  height: item['height'] , 
+  randomString: item['randomString'] , 
+  textsize:item['textsize'] , 
+  textheme: item['textheme'] , 
+  values:item['values'] , 
+  isapp:item['isapp'] , 
+  selectedValuezv:item['selectedValuezv'] , ) 
 
-  loaditemData(index); // 将当前列表项的索引位置传递给 loaditemData 方法
-        },
-),
-                      IconButton(
-                        icon: Icon(Icons.edit),
-                        onPressed: () => _editItem(index),
-                      ),
-                      edited
-                          ? GestureDetector(
-  onTap: () {
-    // 要执行的操作
-    _navigateToPage(item);
-  },
-  child: Icon(
-    Icons.edit_outlined,
-    color: Colors.green,
-  ),
-)
-                          : SizedBox(),
-                    ],
-                  ),
-                  onTap: () => _markItemAsEdited(index),
-                );
+   );  
+
+  //  String dateString = item['date'];
+  // DateTime date = DateTime.parse(dateString);
+                              },
+                            ),
+                            IconButton(
+                                       tooltip: '删除',
+                              icon: Icon(Icons.delete),
+                              onPressed: () => _deleteItem(index),
+                            ),
+                            IconButton(
+                       tooltip: '复制',
+                              icon: Icon(Icons.copy),
+                              onPressed: () => _copyItem(index),
+                            ),
+                            IconButton(
+                               tooltip: '详细',
+                              icon: Icon(Icons.details),
+                              onPressed: () => _showItemDetails(index),
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.add),
+                              onPressed: () {
+                                loaditemData(
+                                    index); // 将当前列表项的索引位置传递给 loaditemData 方法
+                              },
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.edit),
+                              onPressed: () => _editItem(index),
+                            ),
+                            edited
+                                ? GestureDetector(
+                                    onTap: () {
+                                      // 要执行的操作
+                                      _navigateToPage(item);
+                                    },
+                                    child: Icon(
+                                      Icons.edit_outlined,
+                                      color: Colors.green,
+                                    ),
+                                  )
+                                : SizedBox(),
+                          ],
+                        ),
+                        onTap: () => _markItemAsEdited(index),
+                      );
               },
             ),
-bottomNavigationBar: Stack(
-  children: [
-    _buildBottomNavigationBar(),
-    // Positioned(
-    //   bottom: 0,
-    //   left: 0,
-    //   right: 0,
-    //   child: BottomAppBar(
-    //     child: Row(
-    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //       children: [
-    //         IconButton(
-    //           icon: Icon(Icons.refresh),
-    //           onPressed: _loadData,
-    //         ),
-    //         IconButton(
-    //           icon: Icon(Icons.paste),
-    //           onPressed: _importDataFromClipboard,
-    //         ),
-    //       ],
-    //     ),
-    //   ),
-    // ),
-  ],
-),
+      bottomNavigationBar: Stack(
+        children: [
+          _buildBottomNavigationBar(),
+          // Positioned(
+          //   bottom: 0,
+          //   left: 0,
+          //   right: 0,
+          //   child: BottomAppBar(
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //       children: [
+          //         IconButton(
+          //           icon: Icon(Icons.refresh),
+          //           onPressed: _loadData,
+          //         ),
+          //         IconButton(
+          //           icon: Icon(Icons.paste),
+          //           onPressed: _importDataFromClipboard,
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
+        ],
+      ),
     );
   }
 }
@@ -399,15 +480,14 @@ class _EditItemPageState extends State<EditItemPages> {
   void initState() {
     super.initState();
     _titleController = TextEditingController(text: widget.item['title']);
-    _contentController =
-        TextEditingController(text: widget.item['content']);
+    _contentController = TextEditingController(text: widget.item['content']);
   }
 
   @override
   void dispose() {
     _titleController?.dispose();
     _contentController?.dispose();
-    
+
     super.dispose();
   }
 

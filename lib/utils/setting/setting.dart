@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:FreeTime/export.dart';
+import 'package:FreeTime/viewpage/about/amain.dart';
+import 'package:FreeTime/viewpage/about/license.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -26,7 +27,7 @@ class SettingsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SecurityPage()),
+                MaterialPageRoute(builder: (context) => aboutPage()),
               );
             },
           ),
@@ -36,7 +37,7 @@ class SettingsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NotificationsPage()),
+                MaterialPageRoute(builder: (context) => licensePage()),
               );
             },
           ),
@@ -77,33 +78,7 @@ class SettingsPage extends StatelessWidget {
 
 
 
-class SecurityPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('加密'),
-      ),
-      body: Center(
-        child: Text('开发中...'),
-      ),
-    );
-  }
-}
 
-class NotificationsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('通知设置'),
-      ),
-      body: Center(
-        child: Text('通知设置页面'),
-      ),
-    );
-  }
-}
 
 class AppearancePage extends StatelessWidget {
   @override
