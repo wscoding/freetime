@@ -1,10 +1,8 @@
-
 ///dart
-export  'dart:convert';
-export  'dart:io';
+export 'dart:convert';
+export 'dart:io';
 export 'dart:async';
 export 'dart:math';
-
 
 //im port 'package:FreeTime/export.dart';
 
@@ -33,11 +31,8 @@ export 'package:circular_countdown_timer/circular_countdown_timer.dart';
 //as
 //  export 'package:http/http.dart' as http;
 
-
 //lib
 export 'package:FreeTime/list.dart';
-
-
 
 //viewpage  ../viewpage/
 export 'viewpage/main/mainpage.dart';
@@ -52,7 +47,6 @@ export '../viewpage/main/up.dart';
 //controller
 export '../controller/gx.dart';
 export 'package:FreeTime/controller/te/lib/widget/clock_widget.dart';
-
 
 //publiclass
 export 'public/daice/dice/paper/paper.dart';
@@ -71,19 +65,18 @@ export 'public/daice/dice/paper/model.dart';
 export 'public/daice/dice/paper/paper_app_bar.dart';
 export 'public/daice/dice/paper/stork_width_selector.dart';
 
-
 //utils
 export '../utils/items.dart';
 export '../utils/itemtext.dart';
 export '../utils/swiper_lie.dart';
-
+export '../utils/label/devpage.dart';
 
 //   imp ort '../export.dart';
 
 //themeui
 
 export 'viewpage/widgets/electron/mathui.dart';
-
+export 'viewpage/widgets/heart/love.dart';
 export 'viewpage/widgets/electron/_widget.dart';
 export 'viewpage/widgets/electron/_path.dart';
 export 'viewpage/widgets/electron/_painter.dart';
@@ -92,3 +85,4 @@ export 'package:FreeTime/viewpage/widgets/daojishi/hr-soft.dart';
 export 'package:FreeTime/viewpage/widgets/qrcode/qrcode.dart';
 export 'package:FreeTime/viewpage/widgets/shaolou/salo-soft.dart';
 export 'package:FreeTime/viewpage/widgets/shaolou/shaolou.dart';
+export '../viewpage/ducu/jindupage.dart';
