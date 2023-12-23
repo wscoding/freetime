@@ -8,7 +8,11 @@ This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
 
+<<<<<<< HEAD
 - [备用仓库](https://repo.ct8.pl/git/pub/520kiss/fts/)
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+>>>>>>> d0391924a1a59989c5580e03f69ff594132019a5
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
 For help getting started with Flutter development, view the
