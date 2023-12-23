@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "lingdong",
+            "request": "launch",
+            "type": "dart"
+        },
+
+ 
+                {
+                    "name": "Flutter",
+                    "request": "launch",
+                    "type": "dart",
+                    "program": "lib/main.dart",
+                    "args": ["--debug"]
+                }
+  
+ ,
+        {
+            "name": "Dart & Flutter",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug"
+        }
+    ]
+}
